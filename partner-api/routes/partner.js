@@ -3,10 +3,10 @@ var router = express.Router();
 
 /*init backendless*/
 var Backendless = require('backendless');
-//var APP_ID = '84904B71-B5F3-4324-AF35-AD1343B0F96E'; 
-//var API_KEY = '53FA7DCE-2E67-25D9-FFA7-6F90B7153E00';
-var APP_ID = '0C86C594-F05A-65BD-FF87-235CF9B43B00'
+var APP_ID = '84904B71-B5F3-4324-AF35-AD1343B0F96E'; 
 var API_KEY = '53FA7DCE-2E67-25D9-FFA7-6F90B7153E00';
+//var APP_ID = '0C86C594-F05A-65BD-FF87-235CF9B43B00'
+//var API_KEY = '53FA7DCE-2E67-25D9-FFA7-6F90B7153E00';
 Backendless.initApp(APP_ID, API_KEY);
 
 /* POST create order many. */
@@ -35,12 +35,7 @@ router.post('/order/price/check', function(req, res, next) {
 
 /* POST create order many. */
 router.post('/order/create', async function(req, res, next) {
-  var listOrder = [
-    { "destination_code":"Joe", "notes":"767878262" },
-    { "destination_code":"Joe", "notes":"767878262" },
-   ];
-   
-   Backendless.Data.of( "triplogistic_orders" ).bulkCreate( listOrder )
+   Backendless.Data.of( "triplogistic_orders" ).Create( order )
      .then( function( result ) {
        res.send( "Objects have been saved" );
      })
